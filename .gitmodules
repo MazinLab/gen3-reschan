@@ -1,0 +1,6 @@
+[submodule "ip/opfb-bin-to-res"]
+	path = ip/opfb-bin-to-res
+	url = https://github.com/MazinLab/opfb-bin-to-res
+[submodule "ip/resonator-dds"]
+	path = ip/resonator-dds
+	url = https://github.com/MazinLab/resonator-dds
