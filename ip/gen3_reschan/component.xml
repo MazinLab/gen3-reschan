@@ -3,7 +3,7 @@
   <spirit:vendor>MazinLab</spirit:vendor>
   <spirit:library>mkidgen3</spirit:library>
   <spirit:name>gen3_reschan</spirit:name>
-  <spirit:version>0.1</spirit:version>
+  <spirit:version>0.2</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>M_AXIS_DATA</spirit:name>
@@ -267,6 +267,18 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         </spirit:portMap>
         <spirit:portMap>
           <spirit:logicalPort>
+            <spirit:name>AWREGION</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>S_AXI_CTRL_awregion</spirit:name>
+            <spirit:vector>
+              <spirit:left spirit:format="long">3</spirit:left>
+              <spirit:right spirit:format="long">0</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
             <spirit:name>AWQOS</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
@@ -451,6 +463,18 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         </spirit:portMap>
         <spirit:portMap>
           <spirit:logicalPort>
+            <spirit:name>ARREGION</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>S_AXI_CTRL_arregion</spirit:name>
+            <spirit:vector>
+              <spirit:left spirit:format="long">3</spirit:left>
+              <spirit:right spirit:format="long">0</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
             <spirit:name>ARQOS</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
@@ -525,30 +549,6 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
             <spirit:name>S_AXI_CTRL_rready</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>ARREGION</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>S_AXI_CTRL_arregion</spirit:name>
-            <spirit:vector>
-              <spirit:left spirit:format="long">3</spirit:left>
-              <spirit:right spirit:format="long">0</spirit:right>
-            </spirit:vector>
-          </spirit:physicalPort>
-        </spirit:portMap>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>AWREGION</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>S_AXI_CTRL_awregion</spirit:name>
-            <spirit:vector>
-              <spirit:left spirit:format="long">3</spirit:left>
-              <spirit:right spirit:format="long">0</spirit:right>
-            </spirit:vector>
-          </spirit:physicalPort>
-        </spirit:portMap>
       </spirit:portMaps>
       <spirit:parameters>
         <spirit:parameter>
@@ -565,7 +565,7 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ADDR_WIDTH</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CTRL.ADDR_WIDTH">31</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CTRL.ADDR_WIDTH">32</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>AWUSER_WIDTH</spirit:name>
@@ -932,7 +932,7 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>20d539b6</spirit:value>
+            <spirit:value>5a4bcc21</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1659,36 +1659,60 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_axi_interconnect_0/xbar</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_bin_to_res_0_0/gen3_reschan_bin_to_res_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_bin_to_res_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_resonator_dds_0_0/gen3_reschan_resonator_dds_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_resonator_dds_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_fir_compiler_0_0/gen3_reschan_fir_compiler_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_fir_compiler_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_xlconstant_0_0/gen3_reschan_xlconstant_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_xlconstant_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_auto_pc_0/gen3_reschan_auto_pc_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_axi_interconnect_0/s00_couplers/auto_pc</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_ooc.xdc</spirit:name>
@@ -1696,12 +1720,20 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>SCOPED_TO_REF_gen3_reschan</spirit:userFileType>
         <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_0d93b578</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1776,53 +1808,85 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_axi_interconnect_0/xbar</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_bin_to_res_0_0/gen3_reschan_bin_to_res_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_bin_to_res_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_resonator_dds_0_0/gen3_reschan_resonator_dds_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_resonator_dds_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_fir_compiler_0_0/gen3_reschan_fir_compiler_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_fir_compiler_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_xlconstant_0_0/gen3_reschan_xlconstant_0_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_xlconstant_0</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/gen3_reschan_auto_pc_0/gen3_reschan_auto_pc_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_axi_interconnect_0/s00_couplers/auto_pc</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>sim/gen3_reschan.protoinst</spirit:name>
         <spirit:fileType>unknown</spirit:fileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>sim/gen3_reschan.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_axi_crossbar_2_1__ref_view_fileset</spirit:name>
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
-          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="axi_crossbar" xilinx:version="2.1">
+          <xilinx:componentRef xsi:type="xilinx:componentRefType" xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="axi_crossbar" xilinx:version="2.1">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -1881,7 +1945,7 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/gen3_reschan_v0_1.tcl</spirit:name>
+        <spirit:name>xgui/gen3_reschan_v0_2.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -1895,7 +1959,7 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>Fine Channelization and Lowpass</spirit:description>
+  <spirit:description>Fine Channelizer and Lowpass</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -1910,28 +1974,27 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
       <xilinx:taxonomies>
         <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>gen3_reschan_v0_1</xilinx:displayName>
+      <xilinx:displayName>gen3_reschan_v0_2</xilinx:displayName>
       <xilinx:definitionSource>IPI</xilinx:definitionSource>
       <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-04-22T16:47:21Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2020-04-22T21:13:02Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b33ce52_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@66a7f1d5_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@f7fd003_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c380fe0_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@32236338_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@c8bb0b8_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@48d1a235_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eeac797_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@63c7570b_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@200a809d_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@313cf38_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f0f28f8_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c5e5806_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@a63d86c_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e4c02f5_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@738dbb_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bfe30d8_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42e62dba_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bbd1366_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@eb490de_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59adb8d7_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6040baa0_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@163b0089_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@686d454b_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c39668b_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1511c258_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22a0f69_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f71ad5a_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79552463_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68e218c1_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b286664_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b32be0_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@181b7ca8_ARCHIVE_LOCATION">c:/Users/one/xilinx_projects/gen3-reschan/ip/gen3_reschan</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.S_AXIS_CLK.ASSOCIATED_BUSIF" xilinx:valueSource="user"/>
@@ -1987,9 +2050,9 @@ g minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 1}</spirit:value>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="98e70b70"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="4b260297"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="3fa7832e"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="be47c77f"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1bd5d7f4"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="f6a13b4c"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="7555cdec"/>
     </xilinx:packagingInfo>
